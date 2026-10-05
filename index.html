@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа №3 — Опрос с анимацией</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="layout-container">
+        <!-- Шапка -->
+        <header class="header-block">
+            <h1>Салон мебели «Комфорт & Уют»</h1>
+            <p>Исследование предпочтений клиентов</p>
+        </header>
+
+        <!-- Навигация -->
+        <nav class="nav-block">
+            <ul>
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">Каталог</a></li>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        </nav>
+
+        <!-- Основная область с формой -->
+        <article class="article-block">
+            <h2>Форма опроса предпочтений мебели</h2>
+            
+            <form id="furnitureForm" novalidate>
+                <!-- Текстовое поле -->
+                <div class="form-group" id="group-username">
+                    <label for="username">Представьтесь, пожалуйста (ФИО): *</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="username" name="username" required placeholder="Иванов Иван">
+                        <span class="status-icon"></span>
+                    </div>
+                    <span class="error-msg" id="err-username"></span>
+                </div>
+
+                <!-- Выбор даты -->
+                <div class="form-group" id="group-visitDate">
+                    <label for="visitDate">Дата визита/опроса: *</label>
+                    <div class="input-wrapper">
+                        <input type="date" id="visitDate" name="visitDate" required>
+                        <span class="status-icon"></span>
+                    </div>
+                    <span class="error-msg" id="err-visitDate"></span>
+                </div>
+
+                <!-- Выбор цвета -->
+                <div class="form-group">
+                    <label for="favoriteColor">Предпочитаемый цвет мебели:</label>
+                    <input type="color" id="favoriteColor" name="favoriteColor" value="#8b5a2b">
+                </div>
+
+                <!-- Переключатели Radio -->
+                <div class="form-group" id="group-furnitureType">
+                    <label>Какую мебель вы ищете? *</label>
+                    <div class="radio-group">
+                        <label class="custom-option"><input type="radio" name="furnitureType" value="Для гостинной" required> Для гостинной</label>
+                        <label class="custom-option"><input type="radio" name="furnitureType" value="Для спальни"> Для спальни</label>
+                        <label class="custom-option"><input type="radio" name="furnitureType" value="Для кухни"> Для кухни</label>
+                    </div>
+                    <span class="error-msg" id="err-furnitureType"></span>
+                </div>
+
+                <!-- Список Выбора (Select / Option) -->
+                <div class="form-group">
+                    <label for="material">Предпочтительный материал:</label>
+                    <select id="material" name="material">
+                        <option value="Массив дерева">Массив дерева</option>
+                        <option value="МДФ / ЛДСП">МДФ / ЛДСП</option>
+                        <option value="Металл и стекло">Металл и стекло</option>
+                        <option value="Экокожа / Ткань">Экокожа / Ткань</option>
+                    </select>
+                </div>
+
+                <!-- Флажки Checkbox -->
+                <div class="form-group">
+                    <label>Что для вас наиболее важно при выборе? (выберите несколько):</label>
+                    <div class="checkbox-group">
+                        <label class="custom-option"><input type="checkbox" name="priorities" value="Качество"> Качество</label>
+                        <label class="custom-option"><input type="checkbox" name="priorities" value="Цена"> Доступная цена</label>
+                        <label class="custom-option"><input type="checkbox" name="priorities" value="Дизайн"> Уникальный дизайн</label>
+                        <label class="custom-option"><input type="checkbox" name="priorities" value="Гарантия"> Длительная гарантия</label>
+                    </div>
+                </div>
+
+                <!-- Кнопки управления -->
+                <div class="form-buttons">
+                    <button type="submit" class="btn btn-submit">Посмотреть результаты</button>
+                    <button type="reset" class="btn btn-reset">Очистить содержимое</button>
+                </div>
+            </form>
+        </article>
+
+        <!-- Боковая панель -->
+        <aside class="aside-block">
+            <h3>Информация</h3>
+            <p>Пройдите наш короткий опрос и получите персональную скидку 5% на первую покупку!</p>
+            <hr>
+            <p><strong>Режим работы:</strong><br>Пн-Сб: 09:00 - 20:00</p>
+        </aside>
+
+        <!-- Подвал -->
+        <footer class="footer-block">
+            <p>Сделано с любовью ;) | Лабораторная работа №3</p>
+        </footer>
+    </div>
+
+    <!-- Модальное окно результатов -->
+    <div id="resultModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModalBtn">&times;</span>
+            <h2>Результаты анкетирования</h2>
+
+            <h3>Данные текущего заполнения:</h3>
+            <div id="currentDataContainer"></div>
+
+            <h3>Список всех зарегистрировавшихся клиентов:</h3>
+            <div id="historyContainer"></div>
+
+            <div class="modal-buttons">
+                <button id="returnBtn" class="btn">Вернуться в предыдущее окно</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
