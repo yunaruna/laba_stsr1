@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let recordsHistory = [];
 
-    // Динамическая валидация при вводе данных (живой отклик)
     usernameInput.addEventListener('input', () => validateUsername());
     visitDateInput.addEventListener('change', () => validateVisitDate());
     
@@ -19,7 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
         radio.addEventListener('change', () => validateFurnitureType());
     });
 
-    // Валидация полей
     function validateUsername() {
         const group = document.getElementById('group-username');
         const val = usernameInput.value.trim();
@@ -74,7 +72,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById(errId).textContent = message;
     }
 
-    // Обработка отправки формы
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
@@ -95,7 +92,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Сброс всех статусов подсветки при очистке формы
     form.addEventListener('reset', () => {
         document.querySelectorAll('.form-group').forEach(group => {
             group.classList.remove('valid', 'invalid');
